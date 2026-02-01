@@ -17,7 +17,7 @@ elif x > 5:
 else:
   print("Less than 5")
 
-# simple grade checker
+# simple grade checker  ddd
 score = 75
 if score >= 90:
   print("Grade A")
