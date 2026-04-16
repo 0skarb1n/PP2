@@ -6,8 +6,8 @@ import random
 pygame.init()
 
 screen = pygame.display.set_mode((800,800))
-
 pygame.mixer.music.load('music.mp3')
+pygame.display.set_caption("Ball Game")
 
 running = True
 
@@ -27,8 +27,8 @@ while running:
 
     screen.fill((0,255,255))
 
-    pygame.draw.circle(screen, (255, 255, 0), (x1, y1), 25)
-    pygame.draw.circle(screen, (200, 200, 0), (x1, y1), 20)
+    pygame.draw.circle(screen, (200, 200, 0), (x1, y1), 25)
+    pygame.draw.circle(screen, (255, 255, 0), (x1, y1), 20)
 
 
 
@@ -50,9 +50,9 @@ while running:
     if keys[pygame.K_LEFT] and x > z:
         x -= 5
     if keys[pygame.K_UP] and y >z:
-            y-=5
+        y-=5
     if keys[pygame.K_DOWN]and y <800-z:
-            y+=5
+        y+=5
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:

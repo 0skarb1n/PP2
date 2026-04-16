@@ -5,15 +5,14 @@ pygame.init()
 screen = pygame.display.set_mode((800, 800))
 clock = pygame.time.Clock()
 
-# Используем 'r' перед строкой, чтобы бэкслеши не ломали код
-bg = pygame.image.load(r'main_clock.png.jpg')
-hand1 = pygame.image.load(r'mickey_hand1.png.jpg')
-hand2 = pygame.image.load(r'mickey_hand2.png.jpg')
+bg = pygame.image.load('main_clock.png.jpg')
+hand_min = pygame.image.load('OIP.png')
+hand_sec = pygame.image.load('OIP2.png')
 
-def rotate_hand(image, angle):
-    rotated_image = pygame.transform.rotate(image, angle)
-    new_rect = rotated_image.get_rect(center=(400, 400))
-    return rotated_image, new_rect
+def draw_hand(image, angle):
+    rotated = pygame.transform.rotate(image, angle)
+    rect = rotated.get_rect(center=(400, 400))
+    screen.blit(rotated, rect)
 
 running = True
 while running:
@@ -21,23 +20,14 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    
     now = datetime.datetime.now()
     
-    
-    sec_angle = -(now.second * 6) + 90
-    min_angle = -(now.minute * 6) + 90
+    sec_angle = -now.second * 6
+    min_angle = -now.minute * 6
 
-    
-    screen.fill((255, 255, 255))
     screen.blit(bg, (0, 0))
-
-    
-    img_min, rect_min = rotate_hand(hand1, min_angle)
-    screen.blit(img_min, rect_min)
-
-    img_sec, rect_sec = rotate_hand(hand2, sec_angle)
-    screen.blit(img_sec, rect_sec)
+    draw_hand(hand_min, min_angle)
+    draw_hand(hand_sec, sec_angle)
 
     pygame.display.flip()
     clock.tick(60)
