@@ -26,16 +26,16 @@ while True:
             sys.exit()
         
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LEFT and dx == 0:
+            if event.key == pygame.K_LEFT:
                 dx = -10
                 dy = 0
-            elif event.key == pygame.K_RIGHT and dx == 0:
+            elif event.key == pygame.K_RIGHT:
                 dx = 10
                 dy = 0
-            elif event.key == pygame.K_UP and dy == 0:
+            elif event.key == pygame.K_UP:
                 dy = -10
                 dx = 0
-            elif event.key == pygame.K_DOWN and dy == 0:
+            elif event.key == pygame.K_DOWN:
                 dy = 10
                 dx = 0
 

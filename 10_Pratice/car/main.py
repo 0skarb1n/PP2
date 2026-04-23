@@ -42,10 +42,10 @@ while True:
         p_rect.y -= 5
     elif keys[pygame.K_DOWN] and p_rect.bottom < H: 
         p_rect.y += 5
-
-    e_rect.y += speed
-    c_rect.y += speed
-
+ 
+    e_rect.y += speed  
+    c_rect.y += speed  
+ 
     if e_rect.top > H:
         e_rect.center = (random.randint(50, 350), -50)
         score += 1

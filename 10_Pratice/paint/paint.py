@@ -35,19 +35,19 @@ while True:
                 current_tool = "circle"
             if event.key == pygame.K_4:
                 current_tool = "eraser"
-            if event.key == pygame.K_r:
-                r += 15
-            if event.key == pygame.K_g:  
-                g += 15
-            if event.key == pygame.K_b: 
-                b += 15
-            if event.key == pygame.K_o: 
-                brush_size += 5
-            if event.key == pygame.K_p: 
-                brush_size = max(5, brush_size - 5)
-            if event.key == pygame.K_c:
-                r, g, b = 0, 0, 0
-                brush_size = 10
+            if event.key == pygame.K_r: 
+                r += 15 
+            if event.key == pygame.K_g:    
+                g += 15 
+            if event.key == pygame.K_b:  
+                b += 15 
+            if event.key == pygame.K_o:  
+                brush_size += 5 
+            if event.key == pygame.K_p:  
+                brush_size = max(5, brush_size - 5) 
+            if event.key == pygame.K_c: 
+                r, g, b = 0, 0, 0 
+                brush_size = 10 
 
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1:
