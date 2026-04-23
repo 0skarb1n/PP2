@@ -38,6 +38,10 @@ while True:
         p_rect.x -= 5
     elif keys[pygame.K_RIGHT] and p_rect.right < W: 
         p_rect.x += 5
+    elif keys[pygame.K_UP] and p_rect.top > 0: 
+        p_rect.y -= 5
+    elif keys[pygame.K_DOWN] and p_rect.bottom < H: 
+        p_rect.y += 5
 
     e_rect.y += speed
     c_rect.y += speed

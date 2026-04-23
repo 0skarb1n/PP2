@@ -82,5 +82,6 @@ while True:
     sc.blit(score_txt, (10, 10))
     sc.blit(level_txt, (W - 100, 10))
 
+    clock.tick(120)
     pygame.display.update()
     clock.tick(speed)
