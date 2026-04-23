@@ -6,6 +6,9 @@ W, H = 400, 600
 sc = pygame.display.set_mode((W, H))
 clock = pygame.time.Clock()
 
+f = pygame.font.SysFont("Arial", 20)
+f_big = pygame.font.SysFont("Arial", 60)
+
 bg = pygame.image.load("road.jpg")
 bg = pygame.transform.rotate(bg, 90)
 bg = pygame.transform.scale(bg, (W, H))
@@ -17,10 +20,12 @@ p_rect = p_img.get_rect(center=(200, 500))
 e_rect = e_img.get_rect(center=(random.randint(50, 350), -50))
 c_rect = pygame.Rect(random.randint(50, 350), -50, 30, 30)
 
+sound_crash = pygame.mixer.Sound("crush.mp3")
+sound_money = pygame.mixer.Sound("money.mp3")
+
 speed = 5
 score = 0
 coins = 0
-f = pygame.font.SysFont("Arial", 20)
 
 while True:
     for event in pygame.event.get():
@@ -29,8 +34,10 @@ while True:
             sys.exit()
 
     keys = pygame.key.get_pressed()
-    if keys[pygame.K_LEFT] and p_rect.left > 0: p_rect.x -= 5
-    if keys[pygame.K_RIGHT] and p_rect.right < W: p_rect.x += 5
+    if keys[pygame.K_LEFT] and p_rect.left > 0: 
+        p_rect.x -= 5
+    elif keys[pygame.K_RIGHT] and p_rect.right < W: 
+        p_rect.x += 5
 
     e_rect.y += speed
     c_rect.y += speed
@@ -44,11 +51,19 @@ while True:
         c_rect.center = (random.randint(50, 350), -50)
 
     if p_rect.colliderect(e_rect):
-        time.sleep(0.5)
+        sound_crash.play()
+        
+        sc.fill((255, 0, 0))
+        txt = f_big.render("GAME OVER", True, (255, 255, 255))
+        sc.blit(txt, (40, 250))
+        pygame.display.update()
+        
+        time.sleep(2)
         pygame.quit()
         sys.exit()
 
     if p_rect.colliderect(c_rect):
+        sound_money.play()
         coins += 1
         c_rect.center = (random.randint(50, 350), -50)
 
